@@ -2,7 +2,8 @@ import React from 'react';
 
 function GameBoard({ guesses, solution }) {
   return (
-    <div className="game-board">
+    <div className="game-board" style={{  
+      textAlign: 'center'}}>
       {guesses.map((guess, i) => (
         <div key={i} className="guess-row">
           {guess.split('').map((letter, j) => {

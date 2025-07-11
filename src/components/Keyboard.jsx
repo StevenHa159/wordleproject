@@ -34,8 +34,9 @@ function Keyboard({ onGuess}) {
 //add buttons here, and in this function. 
   return (
     <>
-    <div className="keyboard">
-      <p>Your Guess: {currentGuess}</p>
+    <div className="keyboard" style={{  
+      textAlign: 'center'}}>
+      <p >Your Guess: {currentGuess}</p>
       <button onClick={() => {
         if (currentGuess.length === 5) {
           onGuess(currentGuess.toLowerCase());
@@ -45,7 +46,9 @@ function Keyboard({ onGuess}) {
     </div>
 
 
-<div className = "Row1">
+<div className = "Row1" style={{
+      textAlign: 'center'
+    }}>
         <Button value = "q" />
         <Button value = "w"/>
         <Button value = "e"/>
@@ -60,7 +63,8 @@ function Keyboard({ onGuess}) {
 
 
       </div>
-      <div className = "Row2">
+      <div className = "Row2" style={{  
+      textAlign: 'center'}}>
         <Button value = "a"/>
         <Button value = "s"/>
         <Button value = "d"/>
@@ -73,7 +77,8 @@ function Keyboard({ onGuess}) {
         <Button value = "l"/>
 
       </div>
-      <div className = "Row3">
+      <div className = "Row3" style={{
+      textAlign: 'center'}}>
         <Button value = "enter"/>
         <Button value = "z"/>
         <Button value = "x"/>
