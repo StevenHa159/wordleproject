@@ -23,10 +23,7 @@ function Keyboard({ onGuess}) {
 
   function Button({value}){
 
-    function handleClick() {
-      console.log(value)
-  }
-    return (<button id = "keys" onClick = {handleClick}> {value} </button>);
+    return (<button id = "keys" onClick={() => handleKeyPress({ key: value })}> {value} </button>);
   };
 
 
@@ -49,7 +46,7 @@ function Keyboard({ onGuess}) {
 
 
 <div className = "Row1">
-        <Button value = "q" onClick = {console.log("q")}/>
+        <Button value = "q" />
         <Button value = "w"/>
         <Button value = "e"/>
         <Button value = "r"/>
