@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 
-function Keyboard({ onGuess }) {
+
+
+function Keyboard({ onGuess}) {
   const [currentGuess, setCurrentGuess] = useState('');
 
   const handleKeyPress = (e) => {
+    
     if (e.key === 'Enter') {
       if (currentGuess.length === 5) {
         onGuess(currentGuess.toLowerCase());
@@ -18,12 +21,22 @@ function Keyboard({ onGuess }) {
     }
   };
 
+  function Button({value}){
+
+    function handleClick() {
+      console.log(value)
+  }
+    return (<button id = "keys" onClick = {handleClick}> {value} </button>);
+  };
+
+
   React.useEffect(() => {
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
   });
-
+//add buttons here, and in this function. 
   return (
+    <>
     <div className="keyboard">
       <p>Your Guess: {currentGuess}</p>
       <button onClick={() => {
@@ -33,6 +46,49 @@ function Keyboard({ onGuess }) {
         }
       }}>Submit</button>
     </div>
+
+
+<div className = "Row1">
+        <Button value = "q" onClick = {console.log("q")}/>
+        <Button value = "w"/>
+        <Button value = "e"/>
+        <Button value = "r"/>
+        <Button value = "t"/>
+        <Button value = "y"/>
+        <Button value = "u"/>
+        <Button value = "i"/>
+        <Button value = "o"/>
+        <Button value = "p"/>
+        
+
+
+      </div>
+      <div className = "Row2">
+        <Button value = "a"/>
+        <Button value = "s"/>
+        <Button value = "d"/>
+        <Button value = "e"/>
+        <Button value = "f"/>
+        <Button value = "g"/>
+        <Button value = "h"/>
+        <Button value = "j"/>
+        <Button value = "k"/>
+        <Button value = "l"/>
+
+      </div>
+      <div className = "Row3">
+        <Button value = "enter"/>
+        <Button value = "z"/>
+        <Button value = "x"/>
+        <Button value = "c"/>
+        <Button value = "v"/>
+        <Button value = "b"/>
+        <Button value = "n"/>
+        <Button value = "m"/>
+        <Button value = "Delete"/>
+        
+      </div>
+      </>
   );
 }
 
