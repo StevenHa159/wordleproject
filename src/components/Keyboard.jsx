@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 
 
 
-function Keyboard({ onGuess}) {
+function Keyboard({ onGuess, letterColors}) {
   const [currentGuess, setCurrentGuess] = useState('');
+  
 
   const handleKeyPress = (e) => {
     
@@ -11,6 +12,7 @@ function Keyboard({ onGuess}) {
       if (currentGuess.length === 5) {
         onGuess(currentGuess.toLowerCase());
         setCurrentGuess('');
+        console.log("game over"); 
       }
     } else if (e.key === 'Backspace') {
       setCurrentGuess(currentGuess.slice(0, -1));
@@ -21,9 +23,10 @@ function Keyboard({ onGuess}) {
     }
   };
 
-  function Button({value}){
+  function Button({value, letterColors}){
+    const color = letterColors[value] || 'lightgray';
 
-    return (<button id = "keys" onClick={() => handleKeyPress({ key: value })}> {value} </button>);
+    return (<button id = "keys" onClick={() => handleKeyPress({ key: value })} style={{ backgroundColor: color }}> {value} </button>);
   };
 
 
@@ -49,45 +52,44 @@ function Keyboard({ onGuess}) {
 <div className = "Row1" style={{
       textAlign: 'center'
     }}>
-        <Button value = "q" />
-        <Button value = "w"/>
-        <Button value = "e"/>
-        <Button value = "r"/>
-        <Button value = "t"/>
-        <Button value = "y"/>
-        <Button value = "u"/>
-        <Button value = "i"/>
-        <Button value = "o"/>
-        <Button value = "p"/>
+        <Button value = "q" letterColors={letterColors}/>
+        <Button value = "w" letterColors={letterColors}/>
+        <Button value = "e" letterColors={letterColors}/>
+        <Button value = "r" letterColors={letterColors}/>
+        <Button value = "t" letterColors={letterColors}/>
+        <Button value = "y" letterColors={letterColors}/>
+        <Button value = "u" letterColors={letterColors}/>
+        <Button value = "i" letterColors={letterColors}/>
+        <Button value = "o" letterColors={letterColors}/>
+        <Button value = "p" letterColors={letterColors}/>
         
 
 
       </div>
       <div className = "Row2" style={{  
       textAlign: 'center'}}>
-        <Button value = "a"/>
-        <Button value = "s"/>
-        <Button value = "d"/>
-        <Button value = "e"/>
-        <Button value = "f"/>
-        <Button value = "g"/>
-        <Button value = "h"/>
-        <Button value = "j"/>
-        <Button value = "k"/>
-        <Button value = "l"/>
+        <Button value = "a" letterColors={letterColors}/>
+        <Button value = "s" letterColors={letterColors}/>
+        <Button value = "d" letterColors={letterColors}/>
+        <Button value = "f" letterColors={letterColors}/>
+        <Button value = "g" letterColors={letterColors}/>
+        <Button value = "h" letterColors={letterColors}/>
+        <Button value = "j" letterColors={letterColors}/>
+        <Button value = "k" letterColors={letterColors}/>
+        <Button value = "l" letterColors={letterColors}/>
 
       </div>
       <div className = "Row3" style={{
       textAlign: 'center'}}>
-        <Button value = "enter"/>
-        <Button value = "z"/>
-        <Button value = "x"/>
-        <Button value = "c"/>
-        <Button value = "v"/>
-        <Button value = "b"/>
-        <Button value = "n"/>
-        <Button value = "m"/>
-        <Button value = "Delete"/>
+        <Button value = "Enter" letterColors={letterColors}/>
+        <Button value = "z" letterColors={letterColors}/>
+        <Button value = "x" letterColors={letterColors}/>
+        <Button value = "c" letterColors={letterColors}/>
+        <Button value = "v" letterColors={letterColors}/>
+        <Button value = "b" letterColors={letterColors}/>
+        <Button value = "n" letterColors={letterColors}/>
+        <Button value = "m" letterColors={letterColors}/>
+        <Button value = "Backspace" letterColors={letterColors}/>
         
       </div>
       </>

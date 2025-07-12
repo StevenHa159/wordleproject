@@ -1,6 +1,7 @@
 import React from 'react';
 
 function GameBoard({ guesses, solution }) {
+
   return (
     <div className="game-board" style={{  
       textAlign: 'center'}}>
