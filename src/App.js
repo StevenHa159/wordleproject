@@ -59,7 +59,9 @@ function App() {
   
 
   return (
-    <div className="App">
+    <div className="App" style={{
+      textAlign: 'center'
+      }}>
       <h1>Wordle Clone</h1>
       <GameBoard guesses={guesses} solution={solution} />
       <Keyboard onGuess={handleGuess} letterColors={letterColors} />
