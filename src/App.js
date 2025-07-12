@@ -34,6 +34,7 @@ function App() {
 }
   const handleGuess = (guess) => {
      if (gameOver || guesses.length >= 6) return;
+     updateLetterColors(guess, solution);
 
     const newGuesses = [...guesses, guess];
     setGuesses(newGuesses);
@@ -53,6 +54,7 @@ function App() {
     setGuesses([]);
     setGameOver(false);
     setHasWon(false);
+    window.location.reload();
   };
   
 
