@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './App.css';
 import { words } from './words';
 import GameBoard from './components/GameBoard';
 import Keyboard from './components/Keyboard';
