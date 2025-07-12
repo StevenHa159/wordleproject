@@ -1,23 +1,70 @@
+/* Center everything on the screen */
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #121213;
+  color: black;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Style the title */
+h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+
+/* Game board styling */
 .game-board {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-top: 20px;
+  gap: 12px;
+  margin-bottom: 30px;
 }
 
+/* Each row of guesses */
 .guess-row {
   display: flex;
-  gap: 5px;
+  gap: 10px;
 }
 
+/* Letter boxes */
 .letter-box {
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: bold;
   color: white;
+  font-size: 32px;
+  border-radius: 6px;
+  text-transform: uppercase;
+}
+
+/* Keyboard area */
+.keyboard {
+  margin-top: 20px;
+}
+
+.keyboard p {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.keyboard button {
+  padding: 10px 20px;
   font-size: 20px;
-  border-radius: 5px;
+  border: none;
+  border-radius: 6px;
+  background-color: #538d4e;
+  color: white;
+  cursor: pointer;
+}
+
+.keyboard button:hover {
+  background-color: #6aaa64;
 }

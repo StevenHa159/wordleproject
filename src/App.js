@@ -3,11 +3,13 @@ import { words } from './words';
 import GameBoard from './components/GameBoard';
 import Keyboard from './components/Keyboard';
 
-
 function App() {
-  const [solution] = useState(words[Math.floor(Math.random() * words.length)]);
+  const getRandomWord = () => words[Math.floor(Math.random() * words.length)];
+  const [solution, setSolution] = useState(getRandomWord());
   const [guesses, setGuesses] = useState([]);
   const [letterColors, setLetterColors] = useState({});
+  const [gameOver, setGameOver] = useState(false);
+  const [hasWon, setHasWon] = useState(false);
   
 
   function updateLetterColors(guess, solution) {
@@ -30,30 +32,44 @@ function App() {
 
   setLetterColors(newColors);
 }
-
-  
-  
   const handleGuess = (guess) => {
-    if (guesses.length < 6) {
-      setGuesses([...guesses, guess]);
-      updateLetterColors(guess, solution);
-    }
+     if (gameOver || guesses.length >= 6) return;
+
+    const newGuesses = [...guesses, guess];
+    setGuesses(newGuesses);
+
+    if (guess === solution) {
+      setGameOver(true);
+      setHasWon(true);
+    } else if (newGuesses.length === 6) {
+      setGameOver(true);
+      setHasWon(false);
+    
+  }
+};
+
+  const resetGame = () => {
+    setSolution(getRandomWord());
+    setGuesses([]);
+    setGameOver(false);
+    setHasWon(false);
   };
   
 
   return (
-    <>
-      <div className="App">
-        <h1>Wordle Clone</h1>
-        <GameBoard guesses={guesses} solution={solution} />
-        <Keyboard onGuess={handleGuess} letterColors={letterColors}/>
-      </div>
-      
-      
-    </>
-    
+    <div className="App">
+      <h1>Wordle Clone</h1>
+      <GameBoard guesses={guesses} solution={solution} />
+      <Keyboard onGuess={handleGuess} letterColors={letterColors} />
+      {gameOver && (
+        <div>
+          <h2>{hasWon ? "🎉 You Win!" : `😢 You Lose! The word was: ${solution}`}</h2>
+        </div>
+      )}
+
+      <button onClick={resetGame}>Restart Game</button>
+    </div>
   );
 }
 
 export default App;
-
